@@ -1,4 +1,4 @@
-#ERROR USUARIO VACÍO
+//ERROR USUARIO VACÍO
 
   $(document).ready(function(){
         $('.log-btn').click(function(){
