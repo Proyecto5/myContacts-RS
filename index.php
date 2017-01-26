@@ -2,10 +2,8 @@
 
 if (isset($_SESSION['usu_nombre'])) {
     header('Location: usuario.php');
-} else{
-	require 'login.view.html';
+} else {
+    header('Location: login.php');
 }
 
-
-
-?>
+ ?>

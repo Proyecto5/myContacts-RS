@@ -14,7 +14,7 @@
 		//      exit;
 		//  }
 
-		 $conexion = mysqli_connect('localhost', 'root', '', 'bd_myContacts');
+		 $conexion = mysqli_connect('localhost', 'root', '', 'bd_mycontacts');
 
 		//le decimos a la conexión que los datos los devuelva diréctamente en utf8, así no hay que usar htmlentities
 		$acentos = mysqli_query($conexion, "SET NAMES 'utf8'");
@@ -24,7 +24,7 @@
 		     echo "errno de depuración: " . mysqli_connect_errno() . PHP_EOL;
 		     echo "error de depuración: " . mysqli_connect_error() . PHP_EOL;
 		     exit;
-		 }
+		 }else{echo "FSDYUFGBHSDAJOF8YVTGDWBSJAKFIOUGIPOIVDGVHBJI'V HFD";}
 
 
 

@@ -3,26 +3,24 @@
 
 <head>
 
-    <!-- META -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="MyContacts login page">
     <meta name="author" content="Sergi, Roger">
 
-    <!-- TITULO -->
     <title>MyContacts</title>
 
-    <!-- BOOTSTRAP -->
+    <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 
-    <!-- FUENTES -->
+    <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Overpass+Mono" rel="stylesheet">
 
-    <!-- CSS -->
+    <!-- Theme CSS -->
     <link href="css/style.css" rel="stylesheet">
 
 </head>
@@ -32,24 +30,19 @@
     <header>
         <div class="header-content">
             <div class="header-content-inner">
-            <!-- LOGO -->
                 <h1 id="homeHeading"><img class="login" src="img/logo1.png"></h1>
                 <hr>
-            <!-- FORMULARIO -->
-                <form class="form-horizontal">
-            <!-- INPUT USUARIO -->
+                <form class="form-horizontal" action="login.proc.php" method="POST">
                   <div class="form-group">
                     <div class="col-sm-offset-4 col-sm-4">
                       <input type="text" class="form-control" id="inputUsuario" placeholder="Usuario">
                     </div>
                   </div>
-            <!-- INPUT PASSWORD -->
                   <div class="form-group">
                     <div class="col-sm-offset-4 col-sm-4">
                       <input type="password" class="form-control" id="inputPassword" placeholder="Contraseña">
                     </div>
                   </div><br/>
-            <!-- ENVIAR -->
                   <div class="form-group">
                     <div class="col-sm-offset-4 col-sm-4">
                       <button type="submit" class="btn btn-primary btn-xl">Entrar <i class="fa fa-check" aria-hidden="true"></i></button>
@@ -58,12 +51,11 @@
                 </form>
                 </div>
                 <br/>
-            <!-- FRASE REGISTRO -->
-            <p>¿Aún no eres usuario? Regístrate <a href="registro.html">aquí</a>.</p>
+            <p>¿Aún no eres usuario? Regístrate <a href="registro.php">aquí</a>.</p>
         </div>
     </header>
 
-    <!-- JQUERY -->
+    <!-- jQuery -->
     <script src="vendor/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
