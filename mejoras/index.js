@@ -11,3 +11,16 @@
         });
 
     });
+
+
+/*
+<?php
+     if(isset($login)){
+      if(mysqli_num_rows($login)>0){
+
+      } else {
+        echo '<span class="alert">Datos incorrectos</span>';
+        }
+      }
+        ?>
+*/
