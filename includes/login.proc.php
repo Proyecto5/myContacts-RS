@@ -1,37 +1,29 @@
-<?php
+<?php session_start();
 include "conexion_bd.php";
 
 
         extract($_REQUEST);
 
-        //1.- Si existe la variable submit hacer:
-    if(isset($submit)){
         
         //2.- Asignación de variables recibidas:
-        $usu_name = trim($inputUsuario);
-        $usu_pwd = trim($inputPassword);
+        $usu_nombre = trim($inputUsuario);
+        $usu_pass = trim($inputPassword);
 
-
-        //SI CREAMOS CUENTA ADMIN, USAR ESTE CÓDIGO
-
-        /*
-        if(!isset($admin)){
-            // echo "No existe <br/>";
-            $usu_categoria = 'profesor';
-        } else {
-            $usu_categoria = 'administrador';
-            // echo "Existe <br/>";
-        }
-        // $usu_categoria = $admin;
-        */
 
         
         //4.- Realización de consulta en la base de datos para los NO administradores:
-            $sql = "SELECT usu_nombre, usu_pass FROM  tbl_usuario WHERE usu_nombre = '$usu_nombre' and usu_pass = '$usu_pass' /*and usu_categoria = '$usu_categoria'*/";
+            $sql = "SELECT usu_nombre, usu_pass FROM  tbl_usuario WHERE usu_nombre = '$usu_nombre' and usu_pass = '$usu_pass'";
 
-            //echo $sql;
 
             $login = mysqli_query($conexion, $sql);
+        
+        if(mysqli_num_rows($login)!=0){
+            echo "lalalalalla";
+            while($log = mysqli_fetch_array($login)){
+                $_SESSION['usu_nombre'] = $log['usu_nombre'];
+            }
+            header('Location: usuario.php');
+        }
 
-       }
+    
 ?>
