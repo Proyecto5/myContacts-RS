@@ -1,34 +1,27 @@
-<?php session_start();
+<?php
+
+session_start();
+//Incluimos conexion_bd
 include "conexion_bd.php";
 
-
+    //Recogemos los parámetros introducidos en login.view (login.php)
         extract($_REQUEST);
-
         
-        //2.- Asignación de variables recibidas:
+        //Asignación de variables recibidas sin espacios:
         $usu_nombre = trim($inputUsuario);
         $usu_pass = trim($inputPassword);
 
-
-        
-        //4.- Realización de consulta en la base de datos para los NO administradores:
+        //Realización de consulta en la base de datos (no hay admins):
             $sql = "SELECT usu_nombre, usu_pass FROM  tbl_usuario WHERE usu_nombre = '$usu_nombre' and usu_pass = '$usu_pass'";
 
-
+        //Juntamos conexión y sql en una variable
             $login = mysqli_query($conexion, $sql);
-<<<<<<< Updated upstream
         
+        //Si hay usuario establece su sesión y lo lleva a usuario.php
         if(mysqli_num_rows($login)!=0){
-            echo "lalalalalla";
-            while($log = mysqli_fetch_array($login)){
+           while($log = mysqli_fetch_array($login)){
                 $_SESSION['usu_nombre'] = $log['usu_nombre'];
             }
             header('Location: usuario.php');
         }
-
-    
-=======
-            //header('location: ../views/usuario.html');
-
->>>>>>> Stashed changes
 ?>

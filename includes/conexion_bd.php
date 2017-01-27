@@ -1,24 +1,12 @@
-
-	<?php
-
-		// //realizamos la conexión
-		// $conexion = mysqli_connect('mysql.hostinger.es', 'u599616374_root', 'xOTf7aKaNv', 'u599616374_titan');
-
-		// //le decimos a la conexión que los datos los devuelva diréctamente en utf8, así no hay que usar htmlentities
-		// $acentos = mysqli_query($conexion, "SET NAMES 'utf8'");
-
-		//  if (!$conexion) {
-		//      echo "Error: No se pudo conectar a MySQL." . PHP_EOL;
-		//      echo "errno de depuración: " . mysqli_connect_errno() . PHP_EOL;
-		//      echo "error de depuración: " . mysqli_connect_error() . PHP_EOL;
-		//      exit;
-		//  }
-
+<?php
+		
+	//Conecta con la base de datos
 		 $conexion = mysqli_connect('localhost', 'root', '', 'bd_mycontacts');
 
-		//le decimos a la conexión que los datos los devuelva diréctamente en utf8, así no hay que usar htmlentities
+	//Establece el set de caracteres UTF-8
 		$acentos = mysqli_query($conexion, "SET NAMES 'utf8'");
 
+	//Si no se conecta correctamente salta error
 		 if (!$conexion) {
 		     echo "Error: No se pudo conectar a MySQL." . PHP_EOL;
 		     echo "errno de depuración: " . mysqli_connect_errno() . PHP_EOL;
