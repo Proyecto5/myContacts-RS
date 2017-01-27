@@ -1,3 +1,8 @@
+<?php 
+    if(isset($_SESSION['error'])){
+        $error = $_SESSION['error'];
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,6 +28,18 @@
     <!-- CSS -->
     <link href="../css/style.css" rel="stylesheet">
 
+    <script>function formulario(f) { 
+    if (f.inputUsuario.value   == '') { alert ('El nombre de usuario esta vacío.');  
+    f.inputUsuario.focus(); return false; } 
+    if (f.inputEmail.value  == '') { alert ('El email esta vacío'); 
+    f.inputEmail.focus(); return false; }  
+    if (f.inputPassword.value   == '') { alert ('Necesitas contraseña!');  
+    f.inputPassword.focus(); return false; } 
+    if (f.inputPassword2.value   == '') { alert ('Necesitas la segunda contraseña!');  
+    f.inputPassword2.focus(); return false; }
+    if (f.inputPassword.value   != f.inputPassword2.value) { alert ('Las contraseñas no coinciden.');  
+    f.inputPassword2.focus(); return false; } return true; }
+    </script>
 </head>
 
 <body id="page-top">
@@ -34,7 +51,7 @@
                 <h1 id="homeHeading"><img class="login" src="../img/logo1.png"></h1>
                 <hr>
             <!-- FORMULARIO -->
-                <form class="form-horizontal" action="../includes/registro.proc.php" method="POST">
+                <form class="form-horizontal" onsubmit="return formulario(this)" action="../includes/registro.proc.php" method="POST">
             <!-- INPUT USUARIO -->
                   <div class="form-group">
                     <div class="col-sm-offset-4 col-sm-4">
@@ -58,6 +75,12 @@
                       <input type="password" class="form-control" name="inputPassword2" id="inputPassword2" placeholder="Repita la contraseña">
                     </div>
                   </div><br/>
+                  <?php if (isset($error)){
+                  echo "<h4>" . $error . "</h4>";
+                  unset($error);
+                  unset($_SESSION['error']); 
+                  }
+                  ?>
             <!-- ENVIAR -->
                   <div class="form-group">
                     <div class="col-sm-offset-4 col-sm-4">
