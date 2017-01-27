@@ -18,11 +18,13 @@ include "conexion_bd.php";
             $login = mysqli_query($conexion, $sql);
         
         if(mysqli_num_rows($login)!=0){
-            echo "lalalalalla";
             while($log = mysqli_fetch_array($login)){
                 $_SESSION['usu_nombre'] = $log['usu_nombre'];
             }
             header('Location: usuario.php');
+        }else{
+            $_SESSION['error'] = "El usuario o la contraseña son erroneos.";
+            header('Location: login.php');
         }
 
     

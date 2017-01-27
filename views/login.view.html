@@ -1,3 +1,8 @@
+<?php 
+    if(isset($_SESSION['error'])){
+        $error = $_SESSION['error'];
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,6 +48,12 @@
                       <input type="password" class="form-control" name="inputPassword" id="inputPassword" placeholder="Contraseña">
                     </div>
                   </div><br/>
+                  <?php if (isset($error)){
+                  echo "<h4>" . $error . "</h4>";
+                  unset($error);
+                  unset($_SESSION['error']); 
+                  }
+                  ?>
                   <div class="form-group">
                     <div class="col-sm-offset-4 col-sm-4">
                       <button type="submit" class="btn btn-primary btn-xl">Entrar <i class="fa fa-check" aria-hidden="true"></i></button>
