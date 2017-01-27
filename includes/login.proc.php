@@ -16,6 +16,7 @@ include "conexion_bd.php";
 
 
             $login = mysqli_query($conexion, $sql);
+<<<<<<< Updated upstream
         
         if(mysqli_num_rows($login)!=0){
             echo "lalalalalla";
@@ -26,4 +27,8 @@ include "conexion_bd.php";
         }
 
     
+=======
+            //header('location: ../views/usuario.html');
+
+>>>>>>> Stashed changes
 ?>

@@ -9,6 +9,4 @@ if (isset($_SESSION['usu_nombre'])) {
 	require '../views/login.view.html';
 }
 
-
-
 ?>
