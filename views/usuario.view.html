@@ -1,5 +1,8 @@
 <?php
 include "../includes/conexion_bd.php";
+if(isset($_SESSION['error'])){
+        $error = $_SESSION['error'];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +51,7 @@ include "../includes/conexion_bd.php";
                 <!-- MODIFICAR USUARIO -->
                         <a class="page-scroll navbar-brand navbar-right" href="../includes/modificarusuario.php"><i class="fa fa-cog" aria-hidden="true"></i></a>
                 <!-- MENSAJE USUARIO -->
-                        <a class="page-scroll navbar-brand navbar-right" href="">Bienvenido, usuario</a>
+                        <a class="page-scroll navbar-brand navbar-right" href="">Bienvenido, <?php echo $_SESSION['usu_nombre']; ?></a>
                         
                     </div>
                     
@@ -69,14 +72,14 @@ include "../includes/conexion_bd.php";
 
                     $resultado=mysqli_query($conexion, "SELECT * FROM tbl_contacto");
 
-                        echo "<table class='table'>";
+                        echo "<table class='table table-bordered'>";
 
                                 echo "<tr>
-                                    <th class='text-center'>Nombre</th>
-                                    <th class='text-center'>Apellidos</th>
-                                    <th class='text-center'>Correo</th>
-                                    <th class='text-center'>Móvil</th>
-                                    <th class='text-center'>Ver más</th>
+                                    <th class='text-center'>NOMBRE</th>
+                                    <th class='text-center'>APELLIDOS</th>
+                                    <th class='text-center'>CORREO</th>
+                                    <th class='text-center'>MÓVIL</th>
+                                    <th class='text-center'>VER MÁS</th>
                                     </tr>";
 
                             if (mysqli_num_rows($resultado) != 0){
