@@ -49,7 +49,7 @@ if(isset($_SESSION['error'])){
                 <!-- LOGOUT -->
                         <a class="page-scroll navbar-brand navbar-right" href="../includes/cerrarsesion.proc.php"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
                 <!-- MODIFICAR USUARIO -->
-                        <a class="page-scroll navbar-brand navbar-right" href="../includes/modificarusuario.php?usu_nombre='+<?php echo $_SESSION['usu_nombre']; ?>+'"><i class="fa fa-cog" aria-hidden="true"></i></a>
+                        <a class="page-scroll navbar-brand navbar-right" href="../includes/modificarusuario.php?usu_nombre=<?php echo $_SESSION['usu_nombre']; ?>"><i class="fa fa-cog" aria-hidden="true"></i></a>
                 <!-- MENSAJE USUARIO -->
                         <a class="page-scroll navbar-brand navbar-right" href="">Bienvenido, <?php echo $_SESSION['usu_nombre']; ?></a>
                         
@@ -68,6 +68,8 @@ if(isset($_SESSION['error'])){
                         <hr>
                         <a href="../includes/nuevocontacto.php" class="btn btn-primary btn-xl page-scroll">Nuevo <i class="fa fa-plus" aria-hidden="true"></i></a><br/><br/><br/>
 
+
+            <!-- MOSTRAR DATOS CONTACTOS EN PHP -->
                 <?php
 
                     $resultado=mysqli_query($conexion, "SELECT * FROM tbl_contacto");
@@ -97,7 +99,7 @@ if(isset($_SESSION['error'])){
                                     <td> $apellido1 $apellido2 </td>
                                     <td> $correo </td>
                                     <td> $movil </td>
-                                    <td> <a href='#'><i class='fa fa-search' aria-hidden='true'></i></a> </td>
+                                    <td> <a href='datoscontacto.php'><i class='fa fa-search' aria-hidden='true'></i></a> </td>
                                     </tr>";
 
                                 }

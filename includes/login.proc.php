@@ -25,7 +25,7 @@ include "conexion_bd.php";
             }
             header('Location: usuario.php');
         }else{
-            $_SESSION['error'] = "El usuario o la contraseña son erroneos.";
+            $_SESSION['error'] = "El usuario o la contraseña son incorrectos.";
             header('Location: login.php');
         }
 ?>
