@@ -29,16 +29,14 @@
     <link href="../css/style.css" rel="stylesheet">
 
     <script>function formulario(f) { 
-    if (f.inputUsuario.value   == '') { alert ('El nombre de usuario esta vacío.');  
-    f.inputUsuario.focus(); return false; } 
-    if (f.inputEmail.value  == '') { alert ('El email esta vacío'); 
-    f.inputEmail.focus(); return false; }  
-    if (f.inputPassword.value   == '') { alert ('Necesitas contraseña!');  
-    f.inputPassword.focus(); return false; } 
-    if (f.inputPassword2.value   == '') { alert ('Necesitas la segunda contraseña!');  
-    f.inputPassword2.focus(); return false; }
-    if (f.inputPassword.value   != f.inputPassword2.value) { alert ('Las contraseñas no coinciden.');  
-    f.inputPassword2.focus(); return false; } return true; }
+    if (f.inputNombre.value   == '') { alert ('El nombre del contacto está vacío.');  
+    f.inputNombre.focus(); return false; } 
+    if (f.inputApellido1.value  == '') { alert ('El primer apellido está vacío.'); 
+    f.inputApellido1.focus(); return false; }  
+    if (f.inputCorreo.value   == '') { alert ('El correo está vacío.');
+    f.inputCorreo.focus(); return false; } 
+    if (f.inputMovil.value   == '') { alert ('Introduce un móvil!');  
+    f.inputMovil.focus(); return false; }
     </script>
 </head>
 
