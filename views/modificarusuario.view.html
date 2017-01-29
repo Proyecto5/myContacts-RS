@@ -12,7 +12,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="MyContacts nuevo contacto">
+    <meta name="description" content="MyContacts login page">
     <meta name="author" content="Sergi, Roger">
 
     <!-- TITULO -->
@@ -48,49 +48,33 @@
         <div class="header-content">
             <div class="header-content-inner">
             <!-- LOGO -->
-                <h1 id="homeHeading">Nuevo contacto</h1>
+                <h1 id="homeHeading"><img class="login" src="../img/logo1.png"></h1>
                 <hr>
             <!-- FORMULARIO -->
-                <form class="form-horizontal" onsubmit="return formulario(this)" action="../includes/nuevocontacto.proc.php" method="POST">
-            <!-- INPUT NOMBRE -->
+                <form class="form-horizontal" onsubmit="return formulario(this)" action="../includes/registro.proc.php" method="POST">
+            <!-- INPUT USUARIO -->
                   <div class="form-group">
                     <div class="col-sm-offset-4 col-sm-4">
-                      <input type="text" class="form-control" name="inputNombre" id="inputNombre" placeholder="Nombre">
+                      <input type="text" class="form-control" name="inputUsuario" id="inputUsuario" placeholder="Usuario">
                     </div>
                   </div>
-            <!-- INPUT APELLIDO1 -->
-                  <div class="form-group">
-                    <div class="col-sm-offset-4 col-sm-2">
-                      <input type="text" class="form-control" name="inputApellido1" id="inputApellido1" placeholder="Apellido 1">
-                    </div>
-            <!-- INPUT APELLIDO2 -->
-                    <div class="col-sm-2">
-                      <input type="text" class="form-control" name="inputApellido2" id="inputApellido2" placeholder="Apellido 2">
-                    </div>
-                  </div>
-            <!-- INPUT CORREO -->
+            <!-- INPUT EMAIL -->
                   <div class="form-group">
                     <div class="col-sm-offset-4 col-sm-4">
-                      <input type="email" class="form-control" name="inputCorreo" id="inputCorreo" placeholder="Correo">
+                      <input type="email" class="form-control" name="inputEmail" id="inputEmail" placeholder="Correo">
                     </div>
                   </div>
-            <!-- INPUT MOVIL -->
+            <!-- INPUT PASSWORD -->
                   <div class="form-group">
-                    <div class="col-sm-offset-4 col-sm-2">
-                      <input type="text" class="form-control" name="inputMovil" id="inputMovil" placeholder="Móvil">
-                    </div>
-            <!-- INPUT FIJO -->
-                    <div class="col-sm-2">
-                      <input type="text" class="form-control" name="inputFijo" id="inputFijo" placeholder="Fijo">
+                    <div class="col-sm-offset-4 col-sm-4">
+                      <input type="password" class="form-control" name="inputPassword" id="inputPassword" placeholder="Contraseña">
                     </div>
                   </div>
-            <!-- INPUT EMPRESA -->
                    <div class="form-group">
                     <div class="col-sm-offset-4 col-sm-4">
-                      <input type="text" class="form-control" name="inputEmpresa" id="inputEmpresa" placeholder="Teléfono de empresa">
+                      <input type="password" class="form-control" name="inputPassword2" id="inputPassword2" placeholder="Repita la contraseña">
                     </div>
                   </div><br/>
-            <!-- ERROR DE SESION -->
                   <?php if (isset($error)){
                   echo "<h4>" . $error . "</h4>";
                   unset($error);
@@ -100,13 +84,14 @@
             <!-- ENVIAR -->
                   <div class="form-group">
                     <div class="col-sm-offset-4 col-sm-4">
-                      <button type="submit" class="btn btn-primary btn-xl">Agregar <i class="fa fa-plus-square" aria-hidden="true"></i></button><br/><br/>
-                      <a href="javascript:history.back()">Volver atrás</a>
+                      <button type="submit" class="btn btn-primary btn-xl">Registrar <i class="fa fa-envelope" aria-hidden="true"></i></button>
                     </div>
                   </div>
                 </form>
                 </div>
                 <br/>
+            <!-- FRASE REGISTRO -->
+            <p>¿Tienes una cuenta? <a href="../includes/login.php">Inicia sesión</a>.</p>
         </div>
     </header>
 
