@@ -1,3 +1,7 @@
+<?php
+include "../includes/conexion_bd.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +25,7 @@
     <link href="https://fonts.googleapis.com/css?family=Overpass+Mono" rel="stylesheet">
 
     <!-- CSS -->
-    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/style-user.css" rel="stylesheet">
 
 </head>
 
@@ -31,35 +35,25 @@
             <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
                 <div class="container-fluid">
                 
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                        </button>
                 <!-- TITULO MYCONTACTS -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                            <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-                        </button>
                         <a class="navbar-brand page-scroll" href="#page-top">MyContacts</a>
-<<<<<<< HEAD
-                        <a class="navbar-brand page-scroll" style="color: black;" href="../includes/cerrarsesion.proc.php">cerrar sesion</a>
-                    </div>
-=======
->>>>>>> origin/master
 
+                    </div>
+                <!-- LOGOUT -->
                         <a class="page-scroll navbar-brand navbar-right" href="../includes/cerrarsesion.proc.php"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                <!-- MODIFICAR USUARIO -->
+                        <a class="page-scroll navbar-brand navbar-right" href="../includes/modificarusuario.php"><i class="fa fa-cog" aria-hidden="true"></i></a>
+                <!-- MENSAJE USUARIO -->
+                        <a class="page-scroll navbar-brand navbar-right" href="">Bienvenido, usuario</a>
                         
                     </div>
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                            <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-                        </button>
+                    
 
-                                <a class="page-scroll navbar-brand navbar-right" href="../includes/modificarusuario.php"><i class="fa fa-cog" aria-hidden="true"></i></a>
-
-                                <a class="page-scroll navbar-brand navbar-right" href="">Bienvenido, usuario</a>
-                        
-                                
-                        
-                    </div>
-
-                    <!-- MENSAJE USUARIO -->
+                    
                 </div>
             </nav>
 
@@ -69,7 +63,47 @@
                     <!-- TITULO PAGINA USUARIO Y BOTON NUEVO CONTACTO -->
                         <h1 id="homeHeading">Gestión de contactos</h1>
                         <hr>
-                        <a href="../includes/anadircontacto.php" class="btn btn-primary btn-xl page-scroll">Nuevo <i class="fa fa-plus" aria-hidden="true"></i></a>
+                        <a href="../includes/nuevocontacto.php" class="btn btn-primary btn-xl page-scroll">Nuevo <i class="fa fa-plus" aria-hidden="true"></i></a><br/><br/>
+
+                <?php
+
+                    $resultado=mysqli_query($conexion, "SELECT * FROM tbl_contacto");
+
+                        echo "<table class='table'>";
+
+                                echo "<tr>
+                                    <th class='text-center'>Nombre</th>
+                                    <th class='text-center'>Apellidos</th>
+                                    <th class='text-center'>Correo</th>
+                                    <th class='text-center'>Móvil</th>
+                                    <th class='text-center'>Ver más</th>
+                                    </tr>";
+
+                            if (mysqli_num_rows($resultado) != 0){
+                            while ($nombres = mysqli_fetch_array($resultado)) {
+                            $nombre = $nombres['con_nombre'];
+                            $apellido1 = $nombres['con_apellido1'];
+                            $apellido2 = $nombres['con_apellido2'];
+                            $correo = $nombres['con_correo'];
+                            $movil = $nombres['con_tMovil'];
+
+
+                                
+                                    echo "<tr>
+                                    <td> $nombre </td>
+                                    <td> $apellido1 $apellido2 </td>
+                                    <td> $correo </td>
+                                    <td> $movil </td>
+                                    <td> <a href='#'><i class='fa fa-search' aria-hidden='true'></i></a> </td>
+                                    </tr>";
+
+                                }
+                                }
+
+                        echo "</table>"
+
+                ?>
+
                     </div>
                 </div>
             </header>
