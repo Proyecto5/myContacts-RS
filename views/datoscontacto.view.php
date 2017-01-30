@@ -129,7 +129,8 @@ if(isset($_SESSION['error'])){
 
                         echo "</table>"
 
-                ?>
+                ?><br/>
+                <a href="javascript:history.back()">Volver atrás</a>
 
                     </div>
                 </div>
