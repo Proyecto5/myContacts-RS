@@ -1,7 +1,14 @@
 <?php
+session_start();
 include "../includes/conexion_bd.php";
 extract($_REQUEST);
+<<<<<<< HEAD
 //echo "$enviar";
+=======
+if(isset($_SESSION['error'])){
+        $error = $_SESSION['error'];
+    }
+>>>>>>> origin/master
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +49,9 @@ extract($_REQUEST);
                             <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                         </button>
                 <!-- TITULO MYCONTACTS -->
+
                         <a class="navbar-brand page-scroll" href="#page-top">Mycontacts</a>
+
 
                     </div>
                 <!-- LOGOUT -->
@@ -63,13 +72,15 @@ extract($_REQUEST);
                 <div class="header-content">
                     <div class="header-content-inner">
                     <!-- TITULO PAGINA USUARIO Y BOTON NUEVO CONTACTO -->
-                        <h1 id="homeHeading">Datos del contacto: </h1>
+                        <h1 id="homeHeading">Datos del contacto: <?php $_GET['idcontacto']; ?></h1>
                         <hr>
                         <a href="../includes/nuevocontacto.php" class="btn btn-primary btn-xl page-scroll">Nuevo <i class="fa fa-plus" aria-hidden="true"></i></a><br/><br/><br/>
 
 
             <!-- MOSTRAR DATOS CONTACTOS EN PHP -->
                 <?php
+
+                    $resultado=mysqli_query($conexion, "SELECT * FROM tbl_contacto WHERE usu_id=$idcontacto");
 
                         echo "<table class='table table-bordered'>";
 
@@ -78,7 +89,8 @@ extract($_REQUEST);
                                     <th class='text-center'>APELLIDOS</th>
                                     <th class='text-center'>CORREO</th>
                                     <th class='text-center'>MÓVIL</th>
-                                    <th class='text-center'>VER MÁS</th>
+                                    <th class='text-center'>FIJO</th>
+                                    <th class='text-center'>EMPRESA</th>
                                     </tr>";
 
                             if (mysqli_num_rows($resultado) != 0){
@@ -88,6 +100,8 @@ extract($_REQUEST);
                             $apellido2 = $nombres['con_apellido2'];
                             $correo = $nombres['con_correo'];
                             $movil = $nombres['con_tMovil'];
+                            $fijo = $nombres['con_tFijo'];
+                            $empresa = $nombres['con_tEmpresa'];
 
 
                                 
@@ -96,7 +110,8 @@ extract($_REQUEST);
                                     <td> $apellido1 $apellido2 </td>
                                     <td> $correo </td>
                                     <td> $movil </td>
-                                    <td> <a href='datoscontacto.php'><i class='fa fa-search' aria-hidden='true'></i></a> </td>
+                                    <td> $fijo </td>
+                                    <td> $empresa </td>
                                     </tr>";
 
                                 }

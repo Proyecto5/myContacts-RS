@@ -93,7 +93,9 @@ if(isset($_SESSION['error'])){
                             $apellido2 = $nombres['con_apellido2'];
                             $correo = $nombres['con_correo'];
                             $movil = $nombres['con_tMovil'];
+
                             $id = $nombres['con_id'];
+
 
 
                                 
@@ -104,14 +106,17 @@ if(isset($_SESSION['error'])){
                                     <td> $movil </td>
                                     <form id='form-id".$contador."' method='POST' action='datoscontacto.php'> 
                                     <input type='hidden' id='con_id' name='con_id' value='$id'> 
+
                                     "; 
                                     
                                    
                                     echo "
+
                                     <td> 
                                     <input type='submit' value='++'>
                                     </form>
                                      </td>
+
                                     </tr>";
                                     $contador++;
                                 }
