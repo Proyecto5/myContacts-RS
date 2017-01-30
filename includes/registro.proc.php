@@ -13,7 +13,7 @@ include "conexion_bd.php";
         
 
         // ------------------ select ------------------
-        $sql = "SELECT * FROM `tbl_usuario` WHERE `usu_nombre` = '$usu_nombre' && `usu_pass` = '$usu_pass'";
+        $sql = "SELECT * FROM `tbl_usuario` WHERE `usu_nombre` = '$usu_nombre'";
 
         $consulta = mysqli_query($conexion, $sql);
         
