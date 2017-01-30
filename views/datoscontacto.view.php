@@ -78,7 +78,8 @@ echo "$enviar";
                                     <th class='text-center'>APELLIDOS</th>
                                     <th class='text-center'>CORREO</th>
                                     <th class='text-center'>MÓVIL</th>
-                                    <th class='text-center'>VER MÁS</th>
+                                    <th class='text-center'>FIJO</th>
+                                    <th class='text-center'>EMPRESA</th>
                                     </tr>";
 
                             if (mysqli_num_rows($resultado) != 0){
@@ -88,6 +89,8 @@ echo "$enviar";
                             $apellido2 = $nombres['con_apellido2'];
                             $correo = $nombres['con_correo'];
                             $movil = $nombres['con_tMovil'];
+                            $fijo = $nombres['con_tFijo'];
+                            $empresa = $nombres['con_tEmpresa'];
 
 
                                 
@@ -96,7 +99,8 @@ echo "$enviar";
                                     <td> $apellido1 $apellido2 </td>
                                     <td> $correo </td>
                                     <td> $movil </td>
-                                    <td> <a href='datoscontacto.php'><i class='fa fa-search' aria-hidden='true'></i></a> </td>
+                                    <td> $fijo </td>
+                                    <td> $empresa </td>
                                     </tr>";
 
                                 }
