@@ -92,6 +92,7 @@ if(isset($_SESSION['error'])){
                             $apellido2 = $nombres['con_apellido2'];
                             $correo = $nombres['con_correo'];
                             $movil = $nombres['con_tMovil'];
+                            $idcontacto = $nombres['con_id'];
 
 
                                 
@@ -100,14 +101,12 @@ if(isset($_SESSION['error'])){
                                     <td> $apellido1 $apellido2 </td>
                                     <td> $correo </td>
                                     <td> $movil </td>
-                                    <form id='form-id' method='POST'> 
-                                    <input type='hidden' id='enviar' name='enviar' value='$id_usuario'> 
+                                    <td> <a href='../views/datoscontacto.view.php?contacto=$idcontacto'><i class='fa fa-search' aria-hidden='true'></i></a></td>
                                     "; 
                                     
                                    
                                     echo "
-                                    <td> <a href='datoscontacto.php' onclick='document.getElementById('form-id').submit();'><i class='fa fa-search' aria-hidden='true'></i></a>
-                                     </td>
+                                    
                                     </tr>";
 
                                 }

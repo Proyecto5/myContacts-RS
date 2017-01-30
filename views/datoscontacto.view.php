@@ -1,7 +1,10 @@
 <?php
+session_start();
 include "../includes/conexion_bd.php";
-$id_producto =  $_POST['enviar'];
-echo "$enviar";
+extract($_REQUEST);
+if(isset($_SESSION['error'])){
+        $error = $_SESSION['error'];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +45,7 @@ echo "$enviar";
                             <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                         </button>
                 <!-- TITULO MYCONTACTS -->
-                        <a class="navbar-brand page-scroll" href="#page-top"><?php echo "$enviar"; ?></a>
+                        <a class="navbar-brand page-scroll" href="#page-top">MyContacts</a>
 
                     </div>
                 <!-- LOGOUT -->
@@ -63,13 +66,15 @@ echo "$enviar";
                 <div class="header-content">
                     <div class="header-content-inner">
                     <!-- TITULO PAGINA USUARIO Y BOTON NUEVO CONTACTO -->
-                        <h1 id="homeHeading">Datos del contacto: </h1>
+                        <h1 id="homeHeading">Datos del contacto: <?php $_GET['idcontacto']; ?></h1>
                         <hr>
                         <a href="../includes/nuevocontacto.php" class="btn btn-primary btn-xl page-scroll">Nuevo <i class="fa fa-plus" aria-hidden="true"></i></a><br/><br/><br/>
 
 
             <!-- MOSTRAR DATOS CONTACTOS EN PHP -->
                 <?php
+
+                    $resultado=mysqli_query($conexion, "SELECT * FROM tbl_contacto WHERE usu_id=$idcontacto");
 
                         echo "<table class='table table-bordered'>";
 
