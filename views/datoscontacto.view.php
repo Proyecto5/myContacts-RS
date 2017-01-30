@@ -72,7 +72,7 @@ if(isset($_SESSION['error'])){
                         <h1 id="homeHeading">Datos de: 
                         <?php  
 
-                        $resultado=mysqli_query($conexion, "SELECT * FROM tbl_contacto WHERE usu_id=$con_id");
+                        $resultado=mysqli_query($conexion, "SELECT * FROM tbl_contacto WHERE con_id=$con_id");
                         
                         if (mysqli_num_rows($resultado) != 0){
                             while ($nombres = mysqli_fetch_array($resultado)) {
@@ -81,16 +81,31 @@ if(isset($_SESSION['error'])){
                             $apellido2 = $nombres['con_apellido2'];
                             $nombre = $nombre . " " . $apellido1 . " " . $apellido2;
                             }
-                        }    
+                        };
+                        echo $nombre;
 
                         ?></h1>
                         <hr>
+                        <!-- <a href="../includes/modificarcontacto.php" class="btn btn-primary btn-xl page-scroll">Modificar contacto <i class="fa fa-gear" aria-hidden="true"></i></a><br/><br/><br/>
+                         --><form id='form-id".$con_id."' method='POST' action='../includes/modificarcontacto.php'> 
+                        
+                         <!-- INPUT HIDDEN PARA PASAR TODOS LOS DATOS DEL CONTACTO A MODIFICARCONTACTO -->
+                        <input type='hidden' id='con_id' name='con_id' value='$id'>
+                        <input type='hidden' id='con_nombre' name='con_nombre' value='$con_nombre'>
+                        <input type='hidden' id='con_apellido1' name='con_apellido1' value='$con_apellido1'>
+                        <input type='hidden' id='con_apellido2' name='con_apellido2' value='$con_apellido2'>
+                        <input type='hidden' id='con_correo' name='con_correo' value='$con_correo'>
+                        <input type='hidden' id='con_tMovil' name='con_tMovil' value='$con_tMovil'>
+                        <input type='hidden' id='con_tFijo' name='con_tFijo' value='$con_tFijo'>
+                        <input type='hidden' id='con_tEmpresa' name='con_tEmpresa' value='$con_tEmpresa'>
+                        <input type='submit' class="btn btn-primary btn-xl page-scroll" value="Modificar contacto" />
+                        </form><br/><br/>
 
 
             <!-- MOSTRAR DATOS CONTACTOS EN PHP -->
                 <?php
 
-                    $resultado=mysqli_query($conexion, "SELECT * FROM tbl_contacto WHERE usu_id=$con_id");
+                    $resultado=mysqli_query($conexion, "SELECT * FROM tbl_contacto WHERE con_id=$con_id");
 
                         echo "<table class='table table-bordered'>";
 
