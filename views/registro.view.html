@@ -38,31 +38,12 @@
     if (f.inputPassword2.value   == '') { alert ('Necesitas la segunda contraseña!');  
     f.inputPassword2.focus(); return false; }
     if (f.inputPassword.value   != f.inputPassword2.value) { alert ('Las contraseñas no coinciden.');  
-    f.inputPassword2.focus(); return false; } return true; 
-
-    var textoBusqueda = $("input#busqueda").val();
- 
-     if (textoBusqueda != "") {
-        $.post("buscar.php", {valorBusqueda: textoBusqueda}, function(mensaje) {
-            $("#resultadoBusqueda").html(mensaje);
-         }); 
-     } else { 
-        $("#resultadoBusqueda").html('<p>JQUERY VACIO</p>');
-        };
+    f.inputPassword2.focus(); return false; } return true;
     }
     </script>
 </head>
 
 <body id="page-top">
-    <?php 
-        $sql = "SELECT * FROM  tbl_usuario";
-
-        //Juntamos conexión y sql en una variable
-            $login = mysqli_query($conexion, $sql);
-        
-        $columnas == mysqli_num_rows($login);
-        
-            ?>
 
     <header>
         <div class="header-content">

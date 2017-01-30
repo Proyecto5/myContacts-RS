@@ -26,6 +26,14 @@
     <!-- Theme CSS -->
     <link href="../css/style.css" rel="stylesheet">
 
+    <script>function formulario(f) { 
+    if (f.inputUsuario.value   == '') { alert ('El nombre de usuario esta vacío.');  
+    f.inputUsuario.focus(); return false; } 
+    if (f.inputPassword.value   == '') { alert ('La contraseña está vacía.');  
+    f.inputPassword.focus(); return false; }  
+    }
+    </script>
+
 </head>
 
 <body id="page-top">
@@ -35,7 +43,7 @@
             <div class="header-content-inner">
                 <h1 id="homeHeading"><img class="login" src="../img/logo1.png"></h1>
                 <hr>
-                <form class="form-horizontal" action="../includes/login.proc.php" method="POST">
+                <form class="form-horizontal" onsubmit="return formulario(this)" action="../includes/login.proc.php" method="POST">
                   <div class="form-group">
                     <div class="col-sm-offset-4 col-sm-4">
                       <input type="text" class="form-control" name="inputUsuario" id="inputUsuario" placeholder="Usuario">
