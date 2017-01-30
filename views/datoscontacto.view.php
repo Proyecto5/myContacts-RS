@@ -2,13 +2,11 @@
 session_start();
 include "../includes/conexion_bd.php";
 extract($_REQUEST);
-<<<<<<< HEAD
-//echo "$enviar";
-=======
+
 if(isset($_SESSION['error'])){
         $error = $_SESSION['error'];
     }
->>>>>>> origin/master
+
 ?>
 
 <!DOCTYPE html>
