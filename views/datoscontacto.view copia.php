@@ -1,11 +1,8 @@
 <?php
 include "../includes/conexion_bd.php";
+$id_producto =  $_POST['enviar'];
+echo "$enviar";
 extract($_REQUEST);
-
-if(isset($_SESSION['error'])){
-        $error = $_SESSION['error'];
-    }
-
 ?>
 
 <!DOCTYPE html>
@@ -46,9 +43,7 @@ if(isset($_SESSION['error'])){
                             <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                         </button>
                 <!-- TITULO MYCONTACTS -->
-
-                        <a class="navbar-brand page-scroll" href="#page-top">Mycontacts</a>
-
+                        <a class="navbar-brand page-scroll" href="#page-top"><?php echo "$enviar"; ?></a>
 
                     </div>
                 <!-- LOGOUT -->
@@ -69,28 +64,13 @@ if(isset($_SESSION['error'])){
                 <div class="header-content">
                     <div class="header-content-inner">
                     <!-- TITULO PAGINA USUARIO Y BOTON NUEVO CONTACTO -->
-                        <h1 id="homeHeading">Datos de: 
-                        <?php  
-
-                        $resultado=mysqli_query($conexion, "SELECT * FROM tbl_contacto WHERE usu_id=$con_id");
-                        
-                        if (mysqli_num_rows($resultado) != 0){
-                            while ($nombres = mysqli_fetch_array($resultado)) {
-                            $nombre = $nombres['con_nombre'];
-                            $apellido1 = $nombres['con_apellido1'];
-                            $apellido2 = $nombres['con_apellido2'];
-                            $nombre = $nombre . " " . $apellido1 . " " . $apellido2;
-                            }
-                        }    
-
-                        ?></h1>
+                        <h1 id="homeHeading">Datos del contacto: $idcontacto</h1>
                         <hr>
+                        <a href="../includes/nuevocontacto.php" class="btn btn-primary btn-xl page-scroll">Nuevo <i class="fa fa-plus" aria-hidden="true"></i></a><br/><br/><br/>
 
 
             <!-- MOSTRAR DATOS CONTACTOS EN PHP -->
                 <?php
-
-                    $resultado=mysqli_query($conexion, "SELECT * FROM tbl_contacto WHERE usu_id=$con_id");
 
                         echo "<table class='table table-bordered'>";
 
