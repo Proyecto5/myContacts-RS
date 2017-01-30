@@ -1,5 +1,4 @@
 <?php
-session_start();
 include "../includes/conexion_bd.php";
 extract($_REQUEST);
 
@@ -67,10 +66,22 @@ if(isset($_SESSION['error'])){
             </nav>
 
             <header>
+            <?php 
+ $resultado=mysqli_query($conexion, "SELECT * FROM tbl_contacto WHERE usu_id=$con_id");
+                    if (mysqli_num_rows($resultado) != 0){
+                            while ($nombres = mysqli_fetch_array($resultado)) {
+                            $nombre = $nombres['con_nombre'];
+                            $apellido1 = $nombres['con_apellido1'];
+                            $apellido2 = $nombres['con_apellido2'];
+                            $nombre = $nombre . " " . $apellido1 . " " . $apellido2;
+                            }
+                    }
+
+            ?>
                 <div class="header-content">
                     <div class="header-content-inner">
                     <!-- TITULO PAGINA USUARIO Y BOTON NUEVO CONTACTO -->
-                        <h1 id="homeHeading">Datos del contacto: <?php $_GET['idcontacto']; ?></h1>
+                        <h1 id="homeHeading">Datos del contacto: <?php echo $nombre; ?></h1>
                         <hr>
                         <a href="../includes/nuevocontacto.php" class="btn btn-primary btn-xl page-scroll">Nuevo <i class="fa fa-plus" aria-hidden="true"></i></a><br/><br/><br/>
 
@@ -78,7 +89,7 @@ if(isset($_SESSION['error'])){
             <!-- MOSTRAR DATOS CONTACTOS EN PHP -->
                 <?php
 
-                    $resultado=mysqli_query($conexion, "SELECT * FROM tbl_contacto WHERE usu_id=$idcontacto");
+                    $resultado=mysqli_query($conexion, "SELECT * FROM tbl_contacto WHERE usu_id=$con_id");
 
                         echo "<table class='table table-bordered'>";
 
