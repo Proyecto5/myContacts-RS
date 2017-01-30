@@ -5,7 +5,10 @@ extract($_REQUEST);
 if(isset($_SESSION['error'])){
         $error = $_SESSION['error'];
     }
-
+if(isset($_SESSION['con_id'])){
+        $con_id = $_SESSION['con_id'];
+        unset($_SESSION['con_id']);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -87,19 +90,7 @@ if(isset($_SESSION['error'])){
                         ?></h1>
                         <hr>
                         <!-- <a href="../includes/modificarcontacto.php" class="btn btn-primary btn-xl page-scroll">Modificar contacto <i class="fa fa-gear" aria-hidden="true"></i></a><br/><br/><br/>
-                         --><form id='form-id".$con_id."' method='POST' action='../includes/modificarcontacto.php'> 
-                        
-                         <!-- INPUT HIDDEN PARA PASAR TODOS LOS DATOS DEL CONTACTO A MODIFICARCONTACTO -->
-                        <input type='hidden' id='con_id' name='con_id' value='$id'>
-                        <input type='hidden' id='con_nombre' name='con_nombre' value='$con_nombre'>
-                        <input type='hidden' id='con_apellido1' name='con_apellido1' value='$con_apellido1'>
-                        <input type='hidden' id='con_apellido2' name='con_apellido2' value='$con_apellido2'>
-                        <input type='hidden' id='con_correo' name='con_correo' value='$con_correo'>
-                        <input type='hidden' id='con_tMovil' name='con_tMovil' value='$con_tMovil'>
-                        <input type='hidden' id='con_tFijo' name='con_tFijo' value='$con_tFijo'>
-                        <input type='hidden' id='con_tEmpresa' name='con_tEmpresa' value='$con_tEmpresa'>
-                        <input type='submit' class="btn btn-primary btn-xl page-scroll" value="Modificar contacto" />
-                        </form><br/><br/>
+                         -->
 
 
             <!-- MOSTRAR DATOS CONTACTOS EN PHP -->
@@ -121,6 +112,7 @@ if(isset($_SESSION['error'])){
                             if (mysqli_num_rows($resultado) != 0){
                             while ($nombres = mysqli_fetch_array($resultado)) {
                             $nombre = $nombres['con_nombre'];
+                            $id = $nombres['con_id'];
                             $apellido1 = $nombres['con_apellido1'];
                             $apellido2 = $nombres['con_apellido2'];
                             $correo = $nombres['con_correo'];
@@ -137,7 +129,21 @@ if(isset($_SESSION['error'])){
                                     <td> $movil </td>
                                     <td> $fijo </td>
                                     <td> $empresa </td>
-                                    </tr>";
+                                    </tr>
+
+                                    <form id='form-id' method='POST' action='modificarcontacto.php'> 
+                        
+                        
+                        <input type='hidden' id='con_id' name='con_id' value='$id'>
+                        <input type='hidden' id='con_nombre' name='con_nombre' value='$nombre'>
+                        <input type='hidden' id='con_apellido1' name='con_apellido1' value='$apellido1'>
+                        <input type='hidden' id='con_apellido2' name='con_apellido2' value='$apellido2'>
+                        <input type='hidden' id='con_correo' name='con_correo' value='$correo'>
+                        <input type='hidden' id='con_tMovil' name='con_tMovil' value='$movil'>
+                        <input type='hidden' id='con_tFijo' name='con_tFijo' value='$fijo'>
+                        <input type='hidden' id='con_tEmpresa' name='con_tEmpresa' value='$empresa'>
+                        <input type='submit' class='btn btn-primary btn-xl page-scroll' value='Modificar contacto' />
+                        </form><br/><br/>";
 
                                 }
                                 }

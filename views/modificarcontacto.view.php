@@ -2,7 +2,7 @@
     if(isset($_SESSION['error'])){
         $error = $_SESSION['error'];
     }
-extract($_REQUEST);
+    $_SESSION['con_id'] = $con_id;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,43 +47,47 @@ extract($_REQUEST);
                 <h1 id="homeHeading">Modificar contacto</h1>
                 <hr>
             <!-- FORMULARIO -->
-                <form class="form-horizontal" onsubmit="return formulario(this)" action="../includes/nuevocontacto.proc.php" method="POST">
+                <form class="form-horizontal" action="modificarcontacto.proc.php" method="POST">
             <!-- INPUT NOMBRE -->
+                  <input type="hidden" name="inputId" id="inputId" value='<?php echo $con_id; ?>'>
                   <div class="form-group">
                     <div class="col-sm-offset-4 col-sm-4">
-                      <input type="text" class="form-control" name="inputNombre" id="inputNombre" placeholder="Nombre" value="<?php echo $con_nombre; ?>">
+                      <input type="text" class="form-control" name="inputNombre" id="inputNombre" placeholder="Nombre" value='<?php echo $con_nombre; ?>'>
                     </div>
                   </div>
             <!-- INPUT APELLIDO1 -->
                   <div class="form-group">
                     <div class="col-sm-offset-4 col-sm-2">
-                      <input type="text" class="form-control" name="inputApellido1" id="inputApellido1" placeholder="Apellido 1">
+                      <input type="text" class="form-control" name="inputApellido1" id="inputApellido1" placeholder="Apellido 1" value='<?php echo $con_apellido1; ?>'>
                     </div>
             <!-- INPUT APELLIDO2 -->
                     <div class="col-sm-2">
-                      <input type="text" class="form-control" name="inputApellido2" id="inputApellido2" placeholder="Apellido 2">
+                      <input type="text" class="form-control" name="inputApellido2" id="inputApellido2" placeholder="Apellido 2" value='<?php echo $con_apellido2; ?>'>
                     </div>
                   </div>
             <!-- INPUT CORREO -->
                   <div class="form-group">
                     <div class="col-sm-offset-4 col-sm-4">
-                      <input type="email" class="form-control" name="inputCorreo" id="inputCorreo" placeholder="Correo">
+                      <input type="email" class="form-control" name="inputCorreo" id="inputCorreo" placeholder="Correo"
+                      value='<?php echo $con_correo; ?>'>
                     </div>
                   </div>
             <!-- INPUT MOVIL -->
                   <div class="form-group">
                     <div class="col-sm-offset-4 col-sm-2">
-                      <input type="text" class="form-control" name="inputMovil" id="inputMovil" placeholder="Móvil">
+                      <input type="text" class="form-control" name="inputMovil" id="inputMovil" placeholder="Móvil"
+                      value='<?php echo $con_tMovil; ?>'>
                     </div>
             <!-- INPUT FIJO -->
                     <div class="col-sm-2">
-                      <input type="text" class="form-control" name="inputFijo" id="inputFijo" placeholder="Fijo">
+                      <input type="text" class="form-control" name="inputFijo" id="inputFijo" placeholder="Fijo"
+                      value='<?php echo $con_tFijo; ?>'>
                     </div>
                   </div>
             <!-- INPUT EMPRESA -->
                    <div class="form-group">
                     <div class="col-sm-offset-4 col-sm-4">
-                      <input type="text" class="form-control" name="inputEmpresa" id="inputEmpresa" placeholder="Teléfono de empresa">
+                      <input type="text" class="form-control" name="inputEmpresa" id="inputEmpresa" placeholder="Teléfono de empresa" value='<?php echo $con_tEmpresa; ?>'>
                     </div>
                   </div><br/>
                   <?php if (isset($error)){
@@ -95,7 +99,7 @@ extract($_REQUEST);
             <!-- ENVIAR -->
                   <div class="form-group">
                     <div class="col-sm-offset-4 col-sm-4">
-                      <button type="submit" class="btn btn-primary btn-xl">Registrar <i class="fa fa-envelope" aria-hidden="true"></i></button><br/><br/>
+                      <button type="submit" class="btn btn-primary btn-xl">Modificar <i class="fa fa-envelope" aria-hidden="true"></i></button><br/><br/>
                       <a href="javascript:history.back()">Volver atrás</a>
                     </div>
                   </div>

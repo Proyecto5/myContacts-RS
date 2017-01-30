@@ -4,7 +4,7 @@
 
 
 if (isset($_SESSION['usu_nombre'])) {
-
+	extract($_REQUEST);
 	require '../views/modificarcontacto.view.php';
 
 } else {
