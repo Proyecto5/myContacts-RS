@@ -3,8 +3,6 @@ include "../includes/conexion_bd.php";
 if(isset($_SESSION['error'])){
         $error = $_SESSION['error'];
     }
-
-$resultado=mysqli_query($conexion, "SELECT * FROM tbl_contacto");
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +14,7 @@ $resultado=mysqli_query($conexion, "SELECT * FROM tbl_contacto");
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="MyContacts datos contacto">
+    <meta name="description" content="MyContacts user page">
     <meta name="author" content="Sergi, Roger">
 
     <!-- TITULO -->
@@ -66,13 +64,16 @@ $resultado=mysqli_query($conexion, "SELECT * FROM tbl_contacto");
                 <div class="header-content">
                     <div class="header-content-inner">
                     <!-- TITULO PAGINA USUARIO Y BOTON NUEVO CONTACTO -->
-                        <h1 id="homeHeading">Datos del contacto: </h1>
+                        <h1 id="homeHeading">Gestión de contactos</h1>
                         <hr>
                         <a href="../includes/nuevocontacto.php" class="btn btn-primary btn-xl page-scroll">Nuevo <i class="fa fa-plus" aria-hidden="true"></i></a><br/><br/><br/>
 
 
             <!-- MOSTRAR DATOS CONTACTOS EN PHP -->
                 <?php
+                    include "../includes/usu_id.php";
+
+                    $resultado=mysqli_query($conexion, "SELECT * FROM tbl_contacto WHERE usu_id=$id_usuario");
 
                         echo "<table class='table table-bordered'>";
 
@@ -99,7 +100,14 @@ $resultado=mysqli_query($conexion, "SELECT * FROM tbl_contacto");
                                     <td> $apellido1 $apellido2 </td>
                                     <td> $correo </td>
                                     <td> $movil </td>
-                                    <td> <a href='datoscontacto.php'><i class='fa fa-search' aria-hidden='true'></i></a> </td>
+                                    <form id='form-id' method='POST'> 
+                                    <input type='hidden' id='enviar' name='enviar' value='$id_usuario'> 
+                                    "; 
+                                    
+                                   
+                                    echo "
+                                    <td> <a href='datoscontacto.php' onclick='document.getElementById('form-id').submit();'><i class='fa fa-search' aria-hidden='true'></i></a>
+                                     </td>
                                     </tr>";
 
                                 }

@@ -6,7 +6,7 @@
 if (isset($_SESSION['usu_nombre'])) {
 
     
-    require '../views/nuevocontacto.view.html';
+    require '../views/nuevocontacto.view.php';
 
 } else {
 

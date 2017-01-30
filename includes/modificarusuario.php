@@ -5,7 +5,7 @@
 
 if (isset($_SESSION['usu_nombre'])) {
 
-	require '../views/modificarusuario.view.html';
+	require '../views/modificarusuario.view.php';
 
 } else {
 	header('Location: login.php');

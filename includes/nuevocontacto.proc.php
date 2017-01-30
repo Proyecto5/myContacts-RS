@@ -1,5 +1,6 @@
 <?php session_start();
 include "conexion_bd.php";
+include "usu_id.php";
 
 
         extract($_REQUEST);
@@ -28,14 +29,14 @@ include "conexion_bd.php";
         //    header('Location: registro.php');
         //}else{
         // ------------------ insert ------------------
-            $sql1 = "INSERT INTO `tbl_contacto` (`con_id`, `con_nombre`, `con_apellido1`, `con_apellido2`, `con_correo`, `con_tMovil`, `con_tFijo`, `con_tEmpresa`) VALUES (NULL, '". $con_nombre ."', '". $con_apellido1 ."', '". $con_apellido2 ."', '". $con_correo ."', '". $con_tMovil ."', '". $con_tFijo ."', '". $con_tEmpresa ."');";
-            //echo "$sql1";
+            $sql = "INSERT INTO `tbl_contacto` (`con_id`,`usu_id`, `con_nombre`, `con_apellido1`, `con_apellido2`, `con_correo`, `con_tMovil`, `con_tFijo`, `con_tEmpresa`) VALUES (NULL, '".$id_usuario."','". $con_nombre ."', '". $con_apellido1 ."', '". $con_apellido2 ."', '". $con_correo ."', '". $con_tMovil ."', '". $con_tFijo ."', '". $con_tEmpresa ."');";
+           // echo "$sql";
             //echo $sql;
 
         //if ($usu_pass == $usu_pass2) {
 
-           $nuevo = mysqli_query($conexion, $sql1);
-        
+           $nuevo = mysqli_query($conexion, $sql);
+            
         
         header('Location: usuario.php');
         //}

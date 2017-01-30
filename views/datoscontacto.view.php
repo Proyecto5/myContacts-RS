@@ -1,8 +1,7 @@
 <?php
 include "../includes/conexion_bd.php";
-if(isset($_SESSION['error'])){
-        $error = $_SESSION['error'];
-    }
+$id_producto =  $_POST['enviar'];
+echo "$enviar";
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +13,7 @@ if(isset($_SESSION['error'])){
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="MyContacts user page">
+    <meta name="description" content="MyContacts datos contacto">
     <meta name="author" content="Sergi, Roger">
 
     <!-- TITULO -->
@@ -43,7 +42,7 @@ if(isset($_SESSION['error'])){
                             <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                         </button>
                 <!-- TITULO MYCONTACTS -->
-                        <a class="navbar-brand page-scroll" href="#page-top">MyContacts</a>
+                        <a class="navbar-brand page-scroll" href="#page-top"><?php echo "$enviar"; ?></a>
 
                     </div>
                 <!-- LOGOUT -->
@@ -64,24 +63,13 @@ if(isset($_SESSION['error'])){
                 <div class="header-content">
                     <div class="header-content-inner">
                     <!-- TITULO PAGINA USUARIO Y BOTON NUEVO CONTACTO -->
-                        <h1 id="homeHeading">Gestión de contactos</h1>
+                        <h1 id="homeHeading">Datos del contacto: </h1>
                         <hr>
                         <a href="../includes/nuevocontacto.php" class="btn btn-primary btn-xl page-scroll">Nuevo <i class="fa fa-plus" aria-hidden="true"></i></a><br/><br/><br/>
 
 
             <!-- MOSTRAR DATOS CONTACTOS EN PHP -->
                 <?php
-                    $usu_nombre = $_SESSION['usu_nombre'];
-                    $sql1 = "SELECT * FROM tbl_usuario WHERE usu_nombre = '$usu_nombre'";
-                    $resultadoUsuario=mysqli_query($conexion, $sql1);
-
-                    if (mysqli_num_rows($resultadoUsuario) != 0){
-                            while ($usuario = mysqli_fetch_array($resultadoUsuario)) {
-
-                            $id_usuario=$usuario['usu_id'];}
-                    }
-
-                    $resultado=mysqli_query($conexion, "SELECT * FROM tbl_contacto WHERE usu_id=$id_usuario");
 
                         echo "<table class='table table-bordered'>";
 
