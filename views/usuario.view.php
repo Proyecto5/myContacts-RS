@@ -86,12 +86,14 @@ if(isset($_SESSION['error'])){
                                     </tr>";
 
                             if (mysqli_num_rows($resultado) != 0){
+                                $contador = 1;
                             while ($nombres = mysqli_fetch_array($resultado)) {
                             $nombre = $nombres['con_nombre'];
                             $apellido1 = $nombres['con_apellido1'];
                             $apellido2 = $nombres['con_apellido2'];
                             $correo = $nombres['con_correo'];
                             $movil = $nombres['con_tMovil'];
+                            $id = $nombres['con_id'];
 
 
                                 
@@ -100,16 +102,18 @@ if(isset($_SESSION['error'])){
                                     <td> $apellido1 $apellido2 </td>
                                     <td> $correo </td>
                                     <td> $movil </td>
-                                    <form id='form-id' method='POST'> 
-                                    <input type='hidden' id='enviar' name='enviar' value='$id_usuario'> 
+                                    <form id='form-id".$contador."' method='POST' action='datoscontacto.php'> 
+                                    <input type='hidden' id='con_id' name='con_id' value='$id'> 
                                     "; 
                                     
                                    
                                     echo "
-                                    <td> <a href='datoscontacto.php' onclick='document.getElementById('form-id').submit();'><i class='fa fa-search' aria-hidden='true'></i></a>
+                                    <td> 
+                                    <input type='submit' value='++'>
+                                    </form>
                                      </td>
                                     </tr>";
-
+                                    $contador++;
                                 }
                                 }
 

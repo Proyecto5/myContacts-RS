@@ -1,7 +1,7 @@
 <?php
 include "../includes/conexion_bd.php";
-$id_producto =  $_POST['enviar'];
-echo "$enviar";
+extract($_REQUEST);
+//echo "$enviar";
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +42,7 @@ echo "$enviar";
                             <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                         </button>
                 <!-- TITULO MYCONTACTS -->
-                        <a class="navbar-brand page-scroll" href="#page-top"><?php echo "$enviar"; ?></a>
+                        <a class="navbar-brand page-scroll" href="#page-top">Mycontacts</a>
 
                     </div>
                 <!-- LOGOUT -->
