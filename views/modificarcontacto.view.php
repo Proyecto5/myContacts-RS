@@ -1,4 +1,4 @@
-<?php 
+<?php
     if(isset($_SESSION['error'])){
         $error = $_SESSION['error'];
     }
@@ -29,11 +29,11 @@
     <!-- CSS -->
     <link href="../css/style.css" rel="stylesheet">
 
-    <!-- <script>function formulario(f) { 
-    if (f.inputUsuario.value   == '') { alert ('El nombre de usuario esta vacío.');  
-    f.inputUsuario.focus(); return false; } 
-    if (f.inputEmail.value  == '') { alert ('El email esta vacío'); 
-    f.inputEmail.focus(); return false; }  
+    <!-- <script>function formulario(f) {
+    if (f.inputUsuario.value   == '') { alert ('El nombre de usuario esta vacío.');
+    f.inputUsuario.focus(); return false; }
+    if (f.inputEmail.value  == '') { alert ('El email esta vacío');
+    f.inputEmail.focus(); return false; }
     }
     </script> -->
 </head>
@@ -93,14 +93,14 @@
                   <?php if (isset($error)){
                   echo "<h4>" . $error . "</h4>";
                   unset($error);
-                  unset($_SESSION['error']); 
+                  unset($_SESSION['error']);
                   }
                   ?>
             <!-- ENVIAR -->
                   <div class="form-group">
                     <div class="col-sm-offset-4 col-sm-4">
                       <button type="submit" class="btn btn-primary btn-xl">Modificar <i class="fa fa-envelope" aria-hidden="true"></i></button><br/><br/>
-                      <a href="javascript:history.back()">Volver atrás</a>
+                      <a href="javascript:history.back(-2)">Volver atrás</a>
                     </div>
                   </div>
                 </form>
