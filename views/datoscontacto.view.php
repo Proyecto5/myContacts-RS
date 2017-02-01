@@ -95,8 +95,24 @@ if(isset($_SESSION['con_id'])){
 
             <!-- MOSTRAR DATOS CONTACTOS EN PHP -->
                 <?php
+                    $resultado1=mysqli_query($conexion, "SELECT * FROM tbl_direccion WHERE `con_id`=$con_id");
+                        
+                        if (mysqli_num_rows($resultado1) != 0){
+                            $cont = 0;
+                            while ($direccion = mysqli_fetch_array($resultado1)) {
+                              $cont++;
+                              if ($cont == 1) {
+                                $direccion1 = $direccion['dir_residencia'];
+                              }elseif ($cont == 2) {
+                                $direccion2 = $direccion['dir_residencia'];
+                              }elseif ($cont == 3) {
+                                $direccion3 = $direccion['dir_residencia'];
+                              }
+                            
+                            }
+                        };
 
-                    $resultado=mysqli_query($conexion, "SELECT * FROM tbl_contacto WHERE con_id=$con_id");
+                    $resultado=mysqli_query($conexion, "SELECT * FROM tbl_contacto WHERE `con_id`=$con_id");
 
                         echo "<table class='table table-bordered'>";
 
@@ -106,8 +122,17 @@ if(isset($_SESSION['con_id'])){
                                     <th class='text-center'>CORREO</th>
                                     <th class='text-center'>MÓVIL</th>
                                     <th class='text-center'>FIJO</th>
-                                    <th class='text-center'>EMPRESA</th>
-                                    </tr>";
+                                    <th class='text-center'>EMPRESA</th>";
+                                    if (isset($direccion1)) {
+                                        echo "<th class='text-center'>DIRECCION 1</th>";
+                                    }
+                                    if (isset($direccion2)) {
+                                        echo "<th class='text-center'>DIRECCION 2</th>";
+                                    }
+                                    if (isset($direccion3)) {
+                                        echo "<th class='text-center'>DIRECCION 3</th>";
+                                    }
+                                    echo "</tr>";
 
                             if (mysqli_num_rows($resultado) != 0){
                             while ($nombres = mysqli_fetch_array($resultado)) {
@@ -128,8 +153,20 @@ if(isset($_SESSION['con_id'])){
                                     <td> $correo </td>
                                     <td> $movil </td>
                                     <td> $fijo </td>
-                                    <td> $empresa </td>
-                                    </tr>
+                                    <td> $empresa </td>";
+                                    if (isset($direccion1)) {
+                                        echo "<td> $direccion1</td>";
+                                        unset($direccion1);
+                                    }
+                                    if (isset($direccion2)) {
+                                        echo "<td> $direccion2</td>";
+                                        unset($direccion2);
+                                    }
+                                    if (isset($direccion3)) {
+                                        echo "<td> $direccion3</td>";
+                                        unset($direccion3);
+                                    }
+                                    echo "</tr>
 
                                     <form id='form-id' method='POST' action='modificarcontacto.php'> 
                         

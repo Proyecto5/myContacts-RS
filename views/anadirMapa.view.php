@@ -2,7 +2,8 @@
     if(isset($_SESSION['error'])){
         $error = $_SESSION['error'];
     }
-    $_SESSION['con_id'] = $con_id;
+    $con_id = $_SESSION['con_id'];
+    $_SESSION['cuadrar'] = $SiNoPongoEstaVAriableSeDescuadra;
     extract($_REQUEST);
 ?>
 <!DOCTYPE html>
@@ -57,28 +58,19 @@
                   
 
                   <br/>
-                  <?php 
-
-                  if (isset($error)){
-                  echo "<h4>" . $error . "</h4>";
-                  unset($error);
-                  unset($_SESSION['error']); 
-                  }
-                  ?>
+                 
+                  
             <!-- ENVIAR -->
                   <div class="form-group">
                     <div class="col-sm-offset-4 col-sm-4">
-                    <form name="formulario" method="POST" action="pruebas.php">
-                      <input type="text" id="direccion" name="direccion" value="<?php if (isset($_SESSION['dir_residencia'])) {
-                        echo $_SESSION['dir_residencia'];
-                      }else{
-                        echo '';
-                      } 
-
-                      ?>">
+                    <form name="formulario" method="POST" action="anadirMapa.proc.php">
+                      <input type="text" id="direccion" name="dir_direccion">
+                      <input type="hidden" name="con_id" value="<?php echo $con_id;?>">
+                      <input type="submit" class="btn btn-primary btn-xl" value="Modificar">
                       
-                      <button type="submit" class="btn btn-primary btn-xl">Modificar <i class="fa fa-envelope" aria-hidden="true"></i></button><br/><br/>
-                    </form>
+                      <br/><br/>
+                    </form></div>
+    </header>
                     <div  style="width: 860px;">
                       <div id="map"></div>
     <script type="text/javascript">
@@ -109,37 +101,37 @@
         var geocoder = new google.maps.Geocoder();
         geocodeAddress(geocoder, map);
       
-        function placeMarker(location) {
-                      if(marker){ //on vérifie si le marqueur existe
-                          marker.setPosition(location); //on change sa position
-                      }else{
-                          marker = new google.maps.Marker({ //on créé le marqueur
-                              position: location, 
-                              map: map
-                          });
-                      }
-                      document.getElementById('lat').value=location.lat();
-                      document.getElementById('lng').value=location.lng();
-                      getAddress(location);
+    //     function placeMarker(location) {
+    //                   if(marker){ //on vérifie si le marqueur existe
+    //                       marker.setPosition(location); //on change sa position
+    //                   }else{
+    //                       marker = new google.maps.Marker({ //on créé le marqueur
+    //                           position: location, 
+    //                           map: map
+    //                       });
+    //                   }
+    //                   document.getElementById('lat').value=location.lat();
+    //                   document.getElementById('lng').value=location.lng();
+    //                   getAddress(location);
                   
-                  function getAddress(latLng) {
-    geocoder.geocode( {'latLng': latLng},
-      function(results, status) {
-        if(status == google.maps.GeocoderStatus.OK) {
-          if(results[0]) {
-            document.getElementById("address").value = results[0].formatted_address;
-          }
-          else {
-            document.getElementById("address").value = "No results";
-          }
-        }
-        else {
-          document.getElementById("address").value = status;
-        }
-      });
-    alert(document.getElementById("address").value);
-    }
-            }
+    //               function getAddress(latLng) {
+    // geocoder.geocode( {'latLng': latLng},
+    //   function(results, status) {
+    //     if(status == google.maps.GeocoderStatus.OK) {
+    //       if(results[0]) {
+    //         document.getElementById("address").value = results[0].formatted_address;
+    //       }
+    //       else {
+    //         document.getElementById("address").value = "No results";
+    //       }
+    //     }
+    //     else {
+    //       document.getElementById("address").value = status;
+    //     }
+    //   });
+    // alert(document.getElementById("address").value);
+    // }
+    //         }
 
             google.maps.event.addListener(map, 'click', function(event) {
 
@@ -210,8 +202,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
                   </div>
                                 </div>
                 <br/>
-        </div>
-    </header>
+        
     
 
 </body>

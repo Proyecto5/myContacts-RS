@@ -3,6 +3,12 @@ include "../includes/conexion_bd.php";
 if(isset($_SESSION['error'])){
         $error = $_SESSION['error'];
     }
+    // if(isset($_SESSION['errordir'])){
+    //     $errordir = $_SESSION['errordir'];
+   
+    //     alert();
+    //     <script><?php
+    // }
 ?>
 
 <!DOCTYPE html>
@@ -86,7 +92,7 @@ if(isset($_SESSION['error'])){
                                     </tr>";
 
                             if (mysqli_num_rows($resultado) != 0){
-                                $contador = 1;
+                            
                             while ($nombres = mysqli_fetch_array($resultado)) {
                             $nombre = $nombres['con_nombre'];
                             $apellido1 = $nombres['con_apellido1'];
@@ -104,7 +110,7 @@ if(isset($_SESSION['error'])){
                                     <td> $apellido1 $apellido2 </td>
                                     <td> $correo </td>
                                     <td> $movil </td>
-                                    <form id='form-id".$contador."' method='POST' action='datoscontacto.php'> 
+                                    <form id='form-id' method='POST' action='datoscontacto.php'> 
                                     <input type='hidden' id='con_id' name='con_id' value='$id'> 
 
                                     "; 
@@ -118,7 +124,6 @@ if(isset($_SESSION['error'])){
                                      </td>
 
                                     </tr>";
-                                    $contador++;
                                 }
                                 }
 

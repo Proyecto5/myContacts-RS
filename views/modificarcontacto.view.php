@@ -3,6 +3,7 @@
         $error = $_SESSION['error'];
     }
     $_SESSION['con_id'] = $con_id;
+    include 'conexion_bd.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,6 +44,30 @@
     <header>
         <div class="header-content">
             <div class="header-content-inner">
+            <?php 
+            $resultado1=mysqli_query($conexion, "SELECT * FROM tbl_direccion WHERE `con_id`=$con_id");
+                        
+                        if (mysqli_num_rows($resultado1) != 0){
+                            $cont = 0;
+                            while ($direccion = mysqli_fetch_array($resultado1)) {
+                              $cont++;
+                              if ($cont == 1) {
+                                $direccion1 = htmlspecialchars($direccion["dir_residencia"]);
+                                $dir_id1 = $direccion["dir_id"];
+                                //htmlentities($direccion1);
+                              }elseif ($cont == 2) {
+                                $direccion2 = $direccion["dir_residencia"];
+                                htmlentities($direccion2);
+                                $dir_id2 = $direccion["dir_id"];
+                              }elseif ($cont == 3) {
+                                $direccion3 = $direccion["dir_residencia"];
+                                htmlentities($direccion3);
+                                $dir_id3 = $direccion["dir_id"];
+                              }
+                            
+                            }
+                        };
+            ?>
             <!-- LOGO -->
                 <h1 id="homeHeading">Modificar contacto</h1>
                 <hr>
@@ -89,8 +114,79 @@
                     <div class="col-sm-offset-4 col-sm-4">
                       <input type="text" class="form-control" name="inputEmpresa" id="inputEmpresa" placeholder="Teléfono de empresa" value='<?php echo $con_tEmpresa; ?>'>
                     </div>
-                  </div><br/>
-                  <?php if (isset($error)){
+                  </div><?php
+                  if (isset($direccion1)) {
+                  
+
+                    echo "<b>Dirección 1:</b> ".$direccion1.
+                    "<br><form method='POST' action='modificarMapa.php>
+                      <input type='hidden' name='dir_id' value='$dir_id1'>
+                      <input type='submit' value='Modificar'></form>     
+                      <form method='POST' action='eliminarMapa.php>
+                      <input type='hidden' name='dir_id' value='$dir_id1'>
+                      <input type='submit' value='Eliminar'></form></br></br>";
+                      
+                  }else{
+                    echo "<form method='POST' action='agregarMapa.php'>
+                          <input type='hidden' name='con_id' value='".$con_id."'>
+                          <input type='submit' value='Agregar dirección'></form><br>
+                          ";
+                        }
+                  if (isset($direccion2)) {
+                  echo "<b>Dirección 2:</b> ".$direccion2.
+                    "<br><form method='POST' action='modificarMapa.php>
+                      <input type='hidden' name='dir_id' value='$dir_id2'>
+                      <input type='submit' value='Modificar'></form>     
+                      <form method='POST' action='eliminarMapa.php>
+                      <input type='hidden' name='dir_id' value='$dir_id2'>
+                      <input type='submit' value='Eliminar'></form></br></br>";
+                  }else{
+                    echo "<form method='POST' action='agregarMapa.php'>
+                          <input type='hidden' name='con_id' value='".$con_id."'>
+                          <input type='submit' value='Agregar dirección'></form><br>
+                          ";
+                  }
+                  if (isset($direccion3)) {
+                  echo "<b>Dirección 3:</b> ".$direccion3.
+                    "<br><form method='POST' action='modificarMapa.php>
+                      <input type='hidden' name='dir_id' value='$dir_id3'>
+                      <input type='submit' value='Modificar'></form>     
+                      <form method='POST' action='eliminarMapa.php>
+                      <input type='hidden' name='dir_id' value='$dir_id3'>
+                      <input type='submit' value='Eliminar'></form></br></br>";
+                  }else{
+                    echo "<form method='POST' action='agregarMapa.php'>
+                          <input type='hidden' name='con_id' value='".$con_id."'>
+                          <input type='submit' value='Agregar dirección'></form><br>
+                          ";
+                  }
+                  
+                  // if (isset($direccion1)) {
+                  //   echo "
+                  //   <div class='form-group'>
+                  //   <div class='col-sm-offset-4 col-sm-4'>
+                  //     <input type='text' class='form-control' name='direccion1' id='direccion1' value='$direccion1'>
+                  //   </div>
+                  // </div><br/>";
+                  // }
+                  // if (isset($direccion2)) {
+                  // echo "
+                  // <div class='form-group'>
+                  //   <div class='col-sm-offset-4 col-sm-4'>
+                  //     <input type='text' class='form-control' name='direccion2' id='direccion2' value='$direccion2'>
+                  //   </div>
+                  // </div><br/>";
+                  // }
+                  // if (isset($direccion3)) {
+                  // echo "
+                  // <div class='form-group'>
+                  //   <div class='col-sm-offset-4 col-sm-4'>
+                  //     <input type='text' class='form-control' name='direccion3' id='direccion3' value='$direccion3'>
+                  //   </div>
+                  // </div><br/>";
+                  // }
+
+                  if (isset($error)){
                   echo "<h4>" . $error . "</h4>";
                   unset($error);
                   unset($_SESSION['error']);
