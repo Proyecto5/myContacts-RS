@@ -26,7 +26,7 @@ include "conexion_bd.php";
             echo $sql1;
             $registroMapa = mysqli_query($conexion, $sql1);
       
-           header('Location: usuario.php');
+           //header('Location: usuario.php');
         // }
 
     
