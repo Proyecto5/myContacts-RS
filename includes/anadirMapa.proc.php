@@ -23,10 +23,10 @@ include "conexion_bd.php";
             
             $sql1 = "INSERT INTO `tbl_direccion` (`dir_id`, `con_id`, `dir_residencia`, `dir_lat`, `dir_lon`) VALUES (NULL, '$con_id', '".$dir_direccion."', NULL, NULL);";
             htmlspecialchars($sql1);
-            echo $sql1;
+            //echo $sql1;
             $registroMapa = mysqli_query($conexion, $sql1);
       
-           //header('Location: usuario.php');
+           header('Location: usuario.php');
         // }
 
     

@@ -1,5 +1,23 @@
+-- phpMyAdmin SQL Dump
+-- version 4.5.2
+-- http://www.phpmyadmin.net
 --
--- Base de datos: `bd_mycontacts`
+-- Servidor: localhost
+-- Tiempo de generación: 01-02-2017 a las 19:13:21
+-- Versión del servidor: 10.1.16-MariaDB
+-- Versión de PHP: 5.6.24
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `bd_myContacts`
 --
 
 -- --------------------------------------------------------
@@ -19,6 +37,14 @@ CREATE TABLE `tbl_contacto` (
   `con_tFijo` int(11) NOT NULL,
   `con_tEmpresa` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbl_contacto`
+--
+
+INSERT INTO `tbl_contacto` (`con_id`, `usu_id`, `con_nombre`, `con_apellido1`, `con_apellido2`, `con_correo`, `con_tMovil`, `con_tFijo`, `con_tEmpresa`) VALUES
+(2, 3, 'Roger', 'Fuste', 'adios', 'roger@gmail.com', 633644663, 848228833, 984723894),
+(3, 3, 'Sergi', 'Falgar', 'Garcia', 'sergi@gmail.com', 664665667, 657787878, 34543543);
 
 -- --------------------------------------------------------
 
@@ -54,9 +80,7 @@ CREATE TABLE `tbl_usuario` (
 INSERT INTO `tbl_usuario` (`usu_id`, `usu_nombre`, `usu_pass`, `usu_correo`) VALUES
 (1, 'roger', '123', 'rfuste18@gmail.com'),
 (2, 'sergi', '123', '38256.joan23@fje.edu'),
-(3, 'david', '123', 'david@profe.cat'),
-(4, '', '', ''),
-(5, 'seguio', '123', 'sergio@profe.cat');
+(3, 'david', '123', 'david@profe.cat');
 
 --
 -- Índices para tablas volcadas
@@ -88,7 +112,7 @@ ALTER TABLE `tbl_usuario`
 -- AUTO_INCREMENT de la tabla `tbl_contacto`
 --
 ALTER TABLE `tbl_contacto`
-  MODIFY `con_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `con_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `tbl_direccion`
 --
@@ -98,7 +122,7 @@ ALTER TABLE `tbl_direccion`
 -- AUTO_INCREMENT de la tabla `tbl_usuario`
 --
 ALTER TABLE `tbl_usuario`
-  MODIFY `usu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `usu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
